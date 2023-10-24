@@ -7,10 +7,11 @@ object MongoStore {
 
   def occ[K, V]: Store[K, V] = new Store[K, V] {
     def update(k: K)(f: Option[V] => Task[V]): Task[Unit] = {
-      // read data with version by key
+      // query data with version by key
       // apply f to data value
       // increment version
-      // conditional write on version back
+      // conditional update on version back
+      // retry if version changed
 
       ZIO.fail(new Throwable("NotImplemented"))
     }

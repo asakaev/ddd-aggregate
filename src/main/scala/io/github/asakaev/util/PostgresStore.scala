@@ -8,7 +8,7 @@ object PostgresStore {
     def update(k: K)(f: Option[V] => Task[V]): Task[Unit] = {
       // select for update data by k
       // apply f to data
-      // write back
+      // update row
 
       ZIO.fail(new Throwable("NotImplemented"))
     }
@@ -20,7 +20,7 @@ object PostgresStore {
       // use transaction-level advisory lock on key
       // select data from pg
       // apply f to data
-      // write back
+      // update multiple rows
 
       ZIO.fail(new Throwable("NotImplemented"))
     }
