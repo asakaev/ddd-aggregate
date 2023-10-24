@@ -10,12 +10,12 @@ object SeatAvailableHandler {
   final case class SeatAvailable(hid: HallId, sid: SeatId)
   final case class Hall(id: HallId, seats: Map[SeatId, ViewerId])
 
-  def free(h: Hall, event: SeatAvailable): Hall = ???
+  def free(h: Hall, sid: SeatId): Hall = ???
 
   def make(halls: Store[HallId, Hall]): SeatAvailableHandler =
     event =>
       halls.update(event.hid) {
         case None    => ZIO.succeed(Hall(event.hid, Map.empty))
-        case Some(h) => ZIO.succeed(free(h, event))
+        case Some(h) => ZIO.succeed(free(h, event.sid))
       }
 }
