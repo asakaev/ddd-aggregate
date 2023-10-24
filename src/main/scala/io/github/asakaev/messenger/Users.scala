@@ -1,6 +1,6 @@
 package io.github.asakaev.messenger
 
-import io.github.asakaev.messenger.ChangeUsername.User
+import io.github.asakaev.messenger.ChangeUsername1.User
 import io.github.asakaev.messenger.model.{UserId, Username}
 import zio.Task
 

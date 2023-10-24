@@ -3,7 +3,7 @@ package io.github.asakaev.messenger
 import io.github.asakaev.messenger.model.{UserId, Username}
 import zio.{Task, ZIO}
 
-object ChangeUsername {
+object ChangeUsername1 {
   type ChangeUsername = Props => Task[Unit]
 
   final case class Props(uid: UserId, username: Username)
