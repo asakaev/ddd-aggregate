@@ -1,6 +1,6 @@
-package io.github.asakaev.movie
+package io.github.asakaev.cinema
 
-import io.github.asakaev.movie.model.{SeatId, ViewerId}
+import io.github.asakaev.cinema.model.{SeatId, ViewerId}
 import io.github.asakaev.util.Store
 import zio.{Task, ZIO}
 

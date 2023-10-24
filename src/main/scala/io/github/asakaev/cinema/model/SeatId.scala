@@ -1,3 +1,3 @@
-package io.github.asakaev.movie.model
+package io.github.asakaev.cinema.model
 
 final case class SeatId(value: Int) extends AnyVal

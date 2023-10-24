@@ -1,4 +1,4 @@
-package io.github.asakaev.movie.model
+package io.github.asakaev.cinema.model
 
 import java.util.UUID
 
