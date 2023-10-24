@@ -10,7 +10,7 @@ object PostgresStore {
       // apply f to data
       // update row
 
-      ZIO.fail(new Throwable("NotImplemented"))
+      ZIO.fail(new NotImplementedError)
     }
   }
 
@@ -22,7 +22,7 @@ object PostgresStore {
       // apply f to data
       // update multiple rows
 
-      ZIO.fail(new Throwable("NotImplemented"))
+      ZIO.fail(new NotImplementedError)
     }
   }
 }

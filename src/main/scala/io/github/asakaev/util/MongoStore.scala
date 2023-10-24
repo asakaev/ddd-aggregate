@@ -13,7 +13,7 @@ object MongoStore {
       // conditional update on version back
       // retry if version changed
 
-      ZIO.fail(new Throwable("NotImplemented"))
+      ZIO.fail(new NotImplementedError)
     }
   }
 }
