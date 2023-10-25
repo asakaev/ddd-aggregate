@@ -16,10 +16,7 @@ object WithdrawMoney {
     props =>
       accounts.get(props.id).flatMap {
         case None => ZIO.fail(new Throwable("AccountNotExists"))
-        case Some(account) =>
-          for {
-            a <- withdraw(account, props.amount)
-            _ <- accounts.put(props.id, a)
-          } yield ()
+        case Some(a) =>
+          withdraw(a, props.amount).flatMap(a => accounts.put(props.id, a))
       }
 }
