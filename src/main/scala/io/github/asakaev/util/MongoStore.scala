@@ -1,17 +1,18 @@
 package io.github.asakaev.util
 
-import io.github.asakaev.util.Mongo.Document
-import zio.Task
+import zio.{Task, ZIO}
 
 object MongoStore {
 
-  def occ[K, V](mongo: Mongo[K, V]): Store[K, V] = new Store[K, V] {
-    def update(k: K)(f: Option[V] => Task[V]): Task[Unit] =
-      for {
-        doc <- mongo.get(k)
-        ver = doc.fold(0L)(_.version)
-        v <- f(doc.map(_.value))
-        _ <- mongo.putIfVersion(k, Document(k, v, ver + 1), ver)
-      } yield ()
+  def occ[K, V]: Store[K, V] = new Store[K, V] {
+    def update(k: K)(f: Option[V] => Task[V]): Task[Unit] = {
+      // find { _id, value, version } by key
+      // apply f to value
+      // increment version
+      // conditional update on old version
+      // retry if version changed
+
+      ZIO.fail(new NotImplementedError)
+    }
   }
 }

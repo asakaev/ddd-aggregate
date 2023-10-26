@@ -4,23 +4,23 @@ import zio.{Task, ZIO}
 
 object PostgresStore {
 
-  def singleRow[K, V]: Store[K, V] = new Store[K, V] {
+  def oneRow[K, V]: Store[K, V] = new Store[K, V] {
     def update(k: K)(f: Option[V] => Task[V]): Task[Unit] = {
-      // select for update data by k
-      // apply f to data
+      // select for update row by k
+      // apply f
       // update row
 
       ZIO.fail(new NotImplementedError)
     }
   }
 
-  def joins[K, V]: Store[K, V] = new Store[K, V] {
+  def manyRows[K, V]: Store[K, V] = new Store[K, V] {
     def update(k: K)(f: Option[V] => Task[V]): Task[Unit] = {
-      // compute lock key as hash(aggregate name + k) -> Long
-      // use transaction-level advisory lock on key
-      // select data from pg
-      // apply f to data
-      // update multiple rows
+      // hash(aggregate_name + k)
+      // use transaction-level advisory lock on hash
+      // select data from multiple tables
+      // apply f
+      // update multiple tables
 
       ZIO.fail(new NotImplementedError)
     }
