@@ -8,10 +8,10 @@ object Fold {
     case object Event   extends Message
   }
 
-  final case class Aggregate(count: Int)
+  final case class Aggregate(n: Int)
 
   List.empty[Message].foldLeft(Aggregate(0)) {
-    case (a, Message.Command) => Aggregate(a.count + 1)
-    case (a, Message.Event)   => Aggregate(a.count - 1)
+    case (a, Message.Command) => Aggregate(a.n + 1)
+    case (a, Message.Event)   => Aggregate(a.n - 1)
   }
 }
