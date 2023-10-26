@@ -1,7 +1,6 @@
 package io.github.asakaev
 
 object Fold {
-  type UseCase = (Aggregate, Message) => Aggregate
 
   sealed trait Message extends Product with Serializable
   object Message {
@@ -11,8 +10,10 @@ object Fold {
 
   final case class Aggregate(count: Int)
 
-  val useCase: UseCase =
-    (a, _) => Aggregate(a.count + 1)
+  def useCase(a: Aggregate, m: Message): Aggregate = m match {
+    case Message.Command => Aggregate(a.count + 1)
+    case Message.Event   => Aggregate(a.count - 1)
+  }
 
   List.empty[Message].foldLeft(Aggregate(0))(useCase)
 }
