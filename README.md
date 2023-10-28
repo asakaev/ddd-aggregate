@@ -1,1 +1,1 @@
-# ddd-aggregate
+# DDD Aggregate
